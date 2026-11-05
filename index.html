@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobotKids - ¡Aprende Robótica Jugando!</title>
+    <meta name="theme-color" content="#6c5ce7">
+    <script>
+        /* Activa las animaciones de scroll. Si por alguna razón no arrancan, se desactivan para no dejar contenido oculto. */
+        document.documentElement.classList.add('js');
+        setTimeout(function () {
+            if (!window.__rvListo) document.documentElement.classList.remove('js');
+        }, 3500);
+    </script>
+    <!-- Fuentes Infantiles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- BARRA DE PROGRESO DE SCROLL -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="logo">
+            <span>🤖</span>
+            ROBOT<span class="highlight">KIDS</span> ✨
+            <picture class="logo-colegio">
+                <source srcset="Logo-colegio-iesma.avif" type="image/avif">
+                <img src="Logo-colegio-iesma.png" alt="Escudo de la Institución Educativa San Mateo" title="Institución Educativa San Mateo" width="46" height="50">
+            </picture>
+        </div>
+        <nav class="nav-links">
+            <a href="#introduccion">💡 ¿Qué es?</a>
+            <a href="#codigos">🧩 Tipos de Código</a>
+            <a href="#inicio" class="active">🚀 Inicio</a>
+            <a href="#niveles">⭐ Elegir Grado</a>
+            <a href="#mapa-programacion">🎮 Niveles</a>
+            <a href="#taller-robot">🛠️ Taller Robot</a>
+        </nav>
+        
+        <div class="puntos-badge">
+            🪙 <span id="puntos-navbar">0</span> <span class="puntos-texto">Puntos</span>
+        </div>
+
+        <button class="btn-contacto" onclick="abrirContacto( )">✉️ <span class="btn-texto">¡Escríbenos!</span></button>
+        <button class="btn-contacto" id="btn-sesion" type="button" onclick="abrirLogin()" title="Iniciar sesión" aria-label="Iniciar sesión" style="padding: 12px 14px; margin-left: 10px; flex-shrink: 0;">🔑</button>
+    </header>
+
+    <!-- INTRODUCCIÓN -->
+    <section id="introduccion" class="hero-section" style="padding-bottom: 0;">
+        <div class="poster-card rv" data-rv="card">
+            <div class="inner-card hero-content-wrapper" style="background: linear-gradient(135deg, #4834d4 0%, #6c5ce7 100%);">
+                <div class="hero-text" style="width: 100%;">
+                    <span class="badge-fun">💡 ¿SABÍAS QUÉ? 💡</span>
+                    <h2 class="sub-title">DESCUBRE EL MUNDO DE LA</h2>
+                    <h1 class="main-title" style="font-size: 3rem;">TECNOLOGÍA</h1>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div style="background: rgba(255, 255, 255, 0.15); padding: 18px; border-radius: 16px; border: 2px dashed #ffeaa7;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.4rem; color: #ffeaa7; margin-bottom: 8px;">🤖 ¿Qué es la Robótica?</h3>
+                            <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4; color: #ffffff;">¡Es construir amigos de metal! 🛠️ Crear y armar máquinas geniales con ruedas, motores y luces para que nos ayuden en tareas divertidas.</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.15); padding: 18px; border-radius: 16px; border: 2px dashed #00b894;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.4rem; color: #55efc4; margin-bottom: 8px;">💻 ¿Qué es la Programación?</h3>
+                            <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4; color: #ffffff;">¡Es dar súper órdenes! 📜 Darle una receta de cocina paso a paso a la computadora para que sepa exactamente qué hacer sin equivocarse.</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.15); padding: 18px; border-radius: 16px; border: 2px dashed #fd79a8;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.4rem; color: #ff7675; margin-bottom: 8px;">⚡ ¿Cómo se Relacionan?</h3>
+                            <p style="font-size: 0.95rem; font-weight: 700; line-height: 1.4; color: #ffffff;">¡Forman un gran equipo! 🧠🤖 El robot es el <strong>cuerpo</strong> (hardware) y la programación es su <strong>cerebro</strong> (software). ¡Sin cerebro no puede moverse!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="robot-hero-avatar">
+                    <div class="robot-head robot-curious">
+                        <div class="robot-antenna">
+                            <div class="antenna-ball"></div>
+                        </div>
+                        <div class="robot-ears left-ear"></div>
+                        <div class="robot-ears right-ear"></div>
+                        <div class="robot-screen">
+                            <div class="robot-eye left-eye"></div>
+                            <div class="robot-eye right-eye"></div>
+                            <div class="robot-mouth mouth-o"></div>
+                        </div>
+                        <div class="robot-cheeks left-cheek"></div>
+                        <div class="robot-cheeks right-cheek"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOS DE CÓDIGO -->
+    <section id="codigos" class="hero-section" style="padding-top: 25px; padding-bottom: 0;">
+        <div class="poster-card rv" data-rv="card">
+            <div class="inner-card hero-content-wrapper" style="background: linear-gradient(135deg, #2c2c54 0%, #474787 100%);">
+                <div class="hero-text" style="width: 100%;">
+                    <span class="badge-fun" style="background-color: #00b894; color: #ffffff;">🧩 LENGUAJES Y HERRAMIENTAS 🧩</span>
+                    <h2 class="sub-title" style="color: #55efc4;">TIPOS DE CÓDIGO</h2>
+                    <h1 class="main-title" style="font-size: 2.8rem;">¿CÓMO LE HABLAMOS AL ROBOT?</h1>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div style="background: rgba(255, 255, 255, 0.12); padding: 18px; border-radius: 16px; border: 2px dashed #fdcb6e;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.3rem; color: #ffeaa7; margin-bottom: 8px;">🧩 Por Bloques</h3>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: #ffffff;">¡Como jugar con LEGOs! 🧱 Juntas fichas de colores como "Avanzar" o "Girar" para programar de forma fácil y divertida.</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.12); padding: 18px; border-radius: 16px; border: 2px dashed #ff7675;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.3rem; color: #ff7675; margin-bottom: 8px;">💻 Texto (Arduino / C++)</h3>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: #ffffff;">¡Cartas con código secreto! ✉️ Escribes palabras exactas y símbolos en la pantalla para darle reglas precisas al robot.</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.12); padding: 18px; border-radius: 16px; border: 2px dashed #a29bfe;">
+                            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.3rem; color: #a29bfe; margin-bottom: 8px;">🐍 Python e IA</h3>
+                            <p style="font-size: 0.9rem; font-weight: 700; color: #ffffff;">¡Superpoderes para pensar! 🧠✨ Le enseñamos al robot a ver con cámaras, escuchar tu voz y tomar decisiones solo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="robot-hero-avatar">
+                    <div class="robot-head robot-coder">
+                        <div class="robot-antenna">
+                            <div class="antenna-ball"></div>
+                        </div>
+                        <div class="robot-ears left-ear"></div>
+                        <div class="robot-ears right-ear"></div>
+                        <div class="robot-screen">
+                            <div class="robot-eye left-eye code-eye">&lt;/&gt;</div>
+                            <div class="robot-eye right-eye code-eye">&lt;/&gt;</div>
+                            <div class="robot-mouth mouth-code"></div>
+                        </div>
+                        <div class="robot-cheeks left-cheek"></div>
+                        <div class="robot-cheeks right-cheek"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PRINCIPAL CON ROBOT ANIMADO -->
+    <section id="inicio" class="hero-section">
+        <div class="poster-card rv" data-rv="card">
+            <div class="inner-card hero-content-wrapper">
+                
+                <div class="hero-text">
+                    <span class="badge-fun">⚡ ¡Aprende Jugando! ⚡</span>
+                    <h2 class="sub-title">CLASES DE</h2>
+                    <h1 class="main-title">ROBÓTICA</h1>
+                    <p class="description">Gana +100 RoboPuntos por acierto. Si fallas pierdes 25 RoboPuntos y avanza la casilla en rojo. 🚀</p>
+                    
+                    <div class="quick-buttons">
+                        <button onclick="seleccionarGrado('grado3')" class="btn-level-fun">
+                            <span>🔍 Grado 3.°: Exploración</span>
+                        </button>
+                        <button onclick="seleccionarGrado('grado4')" class="btn-level-fun">
+                            <span>⚡ Grado 4.°: Circuitos</span>
+                        </button>
+                        <button onclick="seleccionarGrado('grado5')" class="btn-level-fun">
+                            <span>🚀 Grado 5.°: Algoritmos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="robot-hero-avatar">
+                    <div class="robot-head">
+                        <div class="robot-antenna">
+                            <div class="antenna-ball"></div>
+                        </div>
+                        <div class="robot-ears left-ear"></div>
+                        <div class="robot-ears right-ear"></div>
+                        <div class="robot-screen">
+                            <div class="robot-eye left-eye"></div>
+                            <div class="robot-eye right-eye"></div>
+                            <div class="robot-mouth"></div>
+                        </div>
+                        <div class="robot-cheeks left-cheek"></div>
+                        <div class="robot-cheeks right-cheek"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECCIÓN DE GRADOS -->
+    <section id="niveles" class="section-container">
+        <h2 class="section-title rv">🌟 ¡ELIGE TU GRADO DE AVENTURA! 🌟</h2>
+        <p class="section-subtitle rv">20 niveles por cada grado. ¡Demuestra tu conocimiento!</p>
+
+        <div class="grid-levels rv-group">
+            <article id="card-grado3" class="card-level active-grado rv" data-rv="left">
+                <div class="level-badge bg-yellow">⭐ 20 NIVELES</div>
+                <div class="card-icon">🔍</div>
+                <h3>Grado 3.°</h3>
+                <h4>Exploración y Componentes</h4>
+                <p>¡Aprende sobre sensores, motores y componentes de un robot!</p>
+                <button onclick="seleccionarGrado('grado3')" class="btn-action bg-yellow-btn">¡Jugar Grado 3.°! 🚀</button>
+            </article>
+
+            <article id="card-grado4" class="card-level rv" data-rv="up">
+                <div class="level-badge bg-mint">⭐⭐ 20 NIVELES</div>
+                <div class="card-icon">💡</div>
+                <h3>Grado 4.°</h3>
+                <h4>Circuitos y Sensores</h4>
+                <p>¡Leds, servomotores, cables y lógica de programación!</p>
+                <button onclick="seleccionarGrado('grado4')" class="btn-action bg-mint-btn">¡Jugar Grado 4.°! 🚀</button>
+            </article>
+
+            <article id="card-grado5" class="card-level rv" data-rv="right">
+                <div class="level-badge bg-pink">⭐⭐⭐ 20 NIVELES</div>
+                <div class="card-icon">🧠</div>
+                <h3>Grado 5.°</h3>
+                <h4>Algoritmos y Mecatrónica</h4>
+                <p>¡Condicionales, bucles, microcontroladores y retos avanzados!</p>
+                <button onclick="seleccionarGrado('grado5')" class="btn-action bg-pink-btn">¡Jugar Grado 5.°! 🚀</button>
+            </article>
+        </div>
+    </section>
+
+    <!-- MAPA DE 20 NIVELES -->
+    <section id="mapa-programacion" class="section-container bg-interactive-section">
+        <div class="mapa-header rv">
+            <h2 id="titulo-grado-actual" class="section-title">🎮 NIVELES: GRADO 3.°</h2>
+            <p class="section-subtitle">Acierta (✅) para sumar 100 pts. Si te equivocas (❌) pierdes 25 pts pero avanzas.</p>
+            <button class="btn-reset" onclick="reiniciarProgresoGradoActual()">🔄 Reiniciar Progreso de este Grado</button>
+        </div>
+
+        <div id="grid-niveles-juego" class="grid-niveles-container" data-stagger></div>
+    </section>
+
+    <!-- TALLER ROBOT -->
+    <section id="taller-robot" class="section-container">
+        <div class="poster-card rv" data-rv="card">
+            <div class="inner-card hero-content-wrapper" style="background: linear-gradient(135deg, #1e272e 0%, #00b894 100%); flex-direction: column; align-items: center; text-align: center;">
+                <span class="badge-fun" style="background-color: #fbc531; color: #2d3436;">🛠️ GARAJE MECATRÓNICO 🛠️</span>
+                <h2 style="font-family: 'Fredoka', cursive; font-size: 2rem; color: #ffffff;">¡CONSTRUYE TU PROPIO ROBOT!</h2>
+
+                <div class="robot-hero-avatar" style="margin-top: 10px;">
+                    <div class="robot-head robot-builder">
+                        <div class="robot-antenna">
+                            <div class="antenna-ball"></div>
+                        </div>
+                        <div class="robot-ears left-ear"></div>
+                        <div class="robot-ears right-ear"></div>
+                        <div class="robot-screen">
+                            <div class="robot-eye left-eye"></div>
+                            <div class="robot-eye right-eye"></div>
+                            <div class="robot-mouth"></div>
+                        </div>
+                        <div class="robot-cheeks left-cheek"></div>
+                        <div class="robot-cheeks right-cheek"></div>
+                    </div>
+                </div>
+
+                <div class="taller-layout">
+                    <div class="taller-preview rv" data-rv="left">
+                        <h3 style="font-family: 'Fredoka', cursive; color: #2d3436; margin-bottom: 10px;">🤖 Tu Creación</h3>
+                        <div class="canvas-robot" id="canvas-robot" aria-live="polite">
+                            <div class="robot-2d" id="robot-2d" role="img" aria-label="Robot construido en el taller">
+                                <div class="robot-2d-antenna" id="part-antena" aria-hidden="true">
+                                    <span class="robot-2d-antenna-ball"></span>
+                                </div>
+                                <div class="robot-2d-head" id="part-cabeza" data-variant="cabeza_mech">
+                                    <span class="robot-2d-eye left-eye"></span>
+                                    <span class="robot-2d-eye right-eye"></span>
+                                    <span class="robot-2d-mouth"></span>
+                                </div>
+                                <div class="robot-2d-arms" id="part-brazos" data-variant="brazos_metal" aria-hidden="true">
+                                    <span class="robot-2d-arm left-arm"></span>
+                                    <span class="robot-2d-arm right-arm"></span>
+                                </div>
+                                <div class="robot-2d-body" id="part-cuerpo" data-variant="cuerpo_base">
+                                    <span class="robot-2d-panel"></span>
+                                    <span class="robot-2d-light light-one"></span>
+                                    <span class="robot-2d-light light-two"></span>
+                                    <span class="robot-2d-light light-three"></span>
+                                </div>
+                                <div class="robot-2d-legs" id="part-piernas" data-variant="piernas_ruedas" aria-hidden="true">
+                                    <span class="robot-2d-leg left-leg"></span>
+                                    <span class="robot-2d-leg right-leg"></span>
+                                </div>
+                                <div class="robot-2d-accessory" id="part-accesorio" data-variant="accesorio_luz" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="robot-controls" aria-label="Controles del robot">
+                            <p id="robot-status" class="robot-status" role="status">¡Robot listo! Elige una acción.</p>
+                            <div class="robot-control-buttons">
+                                <button type="button" class="btn-robot-control" onclick="controlarRobot('avanzar')">⬆️ Avanzar</button>
+                                <button type="button" class="btn-robot-control" onclick="controlarRobot('girar')">↪️ Girar</button>
+                                <button type="button" class="btn-robot-control" onclick="controlarRobot('saludar')">👋 Saludar</button>
+                                <button type="button" class="btn-robot-control" onclick="controlarRobot('bailar')">🎵 Bailar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="taller-tienda rv" data-rv="right">
+                        <div class="balance-caja">
+                            <span>🪙 RobotPuntos Disponibles:</span>
+                            <strong id="puntos-taller-display">0</strong>
+                        </div>
+                        <div class="catalogo-piezas" id="catalogo-piezas" data-stagger></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGNIAS Y LOGROS -->
+    <section id="logros-estudiante" class="section-container">
+        <div class="poster-card rv" data-rv="card">
+            <div class="inner-card" style="background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);">
+                <div style="width: 100%;">
+                    <span class="badge-fun" style="background-color: #fd79a8; color: #ffffff;">🏆 INSIGNIAS Y LOGROS 🏆</span>
+                    <h3 style="font-family: 'Fredoka', cursive; font-size: 1.8rem; color: #ffeaa7;">TU COLECCIÓN DE MEDALLAS</h3>
+                    <div id="contenedor-logros" data-stagger style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE PREGUNTA / NIVEL -->
+    <div id="modal-pantalla-nivel" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-cerrar-modal" onclick="cerrarNivel()">✖</button>
+            <h2 id="nivel-titulo-modal" style="font-family: 'Fredoka', cursive; color: #6c5ce7;">Nivel 1</h2>
+            
+            <div class="area-mision">
+                <p><b>🎯 Misión:</b> <span id="nivel-objetivo-text">...</span></p>
+                <p style="margin-top: 10px;"><b>❓ Pregunta:</b></p>
+                <p id="nivel-pregunta-text" class="pregunta-destacada">...</p>
+            </div>
+
+            <div id="mensaje-feedback" class="feedback-box" style="display: none;"></div>
+            <div id="opciones-respuesta" class="grid-opciones"></div>
+        </div>
+    </div>
+
+    <!-- MODAL CONTACTO -->
+    <div id="modal-contacto" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-cerrar-modal" onclick="cerrarContacto()">✖</button>
+            <h2 style="font-family: 'Fredoka', cursive; color: #6c5ce7;">✉️ ¡Escríbenos a RobotKids!</h2>
+            <form onsubmit="enviarMensajeContacto(event)" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                <input type="text" placeholder="Tu Nombre o Apodo" required style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe;">
+                <input type="email" placeholder="Correo electrónico del tutor" required style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe;">
+                <textarea placeholder="¿Qué nos quieres contar?" rows="3" required style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe;"></textarea>
+                <button type="submit" class="btn-action bg-yellow-btn">🚀 ¡Enviar Mensaje!</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL INICIO DE SESIÓN -->
+    <div id="modal-login" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-cerrar-modal" type="button" onclick="cerrarLogin()">✖</button>
+
+            <!-- Vista: formulario de acceso / registro -->
+            <div id="vista-auth">
+                <h2 id="auth-titulo" style="font-family: 'Fredoka', cursive; color: #6c5ce7;">🔑 ¡Entra a RobotKids!</h2>
+                <form id="form-auth" onsubmit="enviarAuth(event)" autocomplete="on" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <input type="text" id="auth-usuario" placeholder="Tu nombre de usuario" autocomplete="username" minlength="3" maxlength="20" required style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe;">
+                    <input type="password" id="auth-clave" placeholder="Tu contraseña" autocomplete="current-password" minlength="6" required style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe;">
+                    <input type="password" id="auth-clave2" placeholder="Repite tu contraseña" autocomplete="new-password" style="padding: 10px; border-radius: 10px; border: 2px solid #a29bfe; display: none;">
+                    <div id="auth-mensaje" class="feedback-box" style="display: none;" role="alert"></div>
+                    <button type="submit" id="auth-enviar" class="btn-action bg-yellow-btn">🚀 ¡Entrar!</button>
+                </form>
+                <p style="text-align: center; margin-top: 15px; font-weight: 700; color: #636e72;">
+                    <span id="auth-cambio-texto">¿Aún no tienes cuenta?</span>
+                    <a href="#" id="auth-cambio" onclick="cambiarModoAuth(event)" style="color: #6c5ce7; font-weight: 800;">Crear cuenta</a>
+                </p>
+            </div>
+
+            <!-- Vista: sesión iniciada -->
+            <div id="vista-cuenta" style="display: none; text-align: center;">
+                <h2 style="font-family: 'Fredoka', cursive; color: #6c5ce7;">👤 ¡Hola, <span id="cuenta-nombre"></span>!</h2>
+                <p style="margin: 15px 0; font-weight: 700; color: #636e72;">Tu progreso y tus RobotPuntos se guardan en tu cuenta. 🪙</p>
+                <button type="button" class="btn-action bg-pink-btn" onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-content rv">
+            <div>
+                <h3>🤖 ROBOTKIDS</h3>
+                <p>Aprendiendo tecnología, programación y robótica mientras nos divertimos.</p>
+            </div>
+            <div>
+                <h4>📞 MÁS INFORMACIÓN:</h4>
+                <p>🌐 robotkids22@gmail.com |</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 RobotKids - Proyecto Educativo de Robótica</p>
+        </div>
+    </footer>
+
+    <!-- ROBOT CHAT -->
+    <div class="asistente-container">
+        <div id="bocadillo-asistente" class="bocadillo-chat" role="status" aria-live="polite">
+            <p id="texto-asistente">¡Hola! Soy <strong>Kibo</strong>, el robot de <strong>RobotKids</strong> 🤖. ¡Responde los 20 niveles y gana RoboPuntos para armar tu propio robot! Seré tu amigo de compañía 💙</p>
+            <button onclick="cerrarBocadillo()" class="btn-cerrar-chat" aria-label="Cerrar mensaje">✕</button>
+        </div>
+        <div class="avatar-robot" onclick="alternarBocadillo()" role="button" tabindex="0" aria-label="Robot de RoboKids: toca para ver un mensaje">
+            <img src="robotkids-robot.png" alt="Robot de RoboKids" width="240" height="266" draggable="false">
+        </div>
+    </div>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- VINCULACIÓN CORRECTA AL SCRIPT EXTERNO CON LAS PREGUNTAS VARIADAS -->
+    <script src="script.js"></script>
+</body>
+</html>
